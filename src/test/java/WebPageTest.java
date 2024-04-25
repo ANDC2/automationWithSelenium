@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.time.Duration;
 import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -86,16 +88,34 @@ public class WebPageTest {
 
     }
 
-
     @Test
-    public void addToCart() {
+    public void addToCart_isAddingProductToCart() {
+        String productName = "Neve Studio Dance Jacket";
+        String productSize = "M";
+        String productColor = "Black";
         mainPage.navigateToMainPage();
         mainPage.acceptCookies();
         mainPage.clickOnSignInButton();
         mainPage.logIn();
         mainPage.clickOnJacketsSection();
-        jacketsPage.getItemNames();
-        jacketsPage.addToCart("Neve Studio Dance Jacket");
+        jacketsPage.addToCart(productName, productSize, productColor);
+        assertThat(driver.findElement(By.xpath("//div[@class='message-success success message']")).getText(),
+                is("You added " + productName + " to your shopping cart."));
+
+    }
+
+
+    @Test
+    public void addToCartWithoutSelectingSize_IsOpeningProductPage() throws InterruptedException {
+        String product = "Neve Studio Dance Jacket";
+        mainPage.navigateToMainPage();
+        mainPage.acceptCookies();
+        mainPage.clickOnSignInButton();
+        mainPage.logIn();
+        mainPage.clickOnJacketsSection();
+        jacketsPage.addToCart(product);
+        Thread.sleep(5000);
+        assertThat(driver.getTitle(), is(product));
     }
 }
 
