@@ -41,17 +41,6 @@ public class JacketsPage {
         }
         return itemsPrices;
     }
-
-    public void selectSize(String option) {
-        List<WebElement> sizes = driver.findElements(By.xpath("//div[@class='swatch-option text' and text()]"));
-        for (WebElement size : sizes) {
-            if (size.getText().contains(option)) {
-                size.click();
-                break;
-            }
-        }
-    }
-
     public void addToCart(String productName, String sizeOption, String colorOption) {
         List<WebElement> products = driver.findElements(By.xpath("//div[@class='column main']//li"));
         int index = -1;
@@ -60,7 +49,7 @@ public class JacketsPage {
             if (productNameElement.getText().equals(productName)) {
                 index = i;
                 WebElement productSize = products.get(i).findElement(By.xpath(".//div[@class='swatch-option text' and text()='" + sizeOption + "']"));
-                WebElement productColor = products.get(i).findElement(By.xpath(".//div[@class='swatch-option color' and @option-label='" + colorOption + "']")); // Adjust the xpath for color accordingly
+                WebElement productColor = products.get(i).findElement(By.xpath(".//div[@class='swatch-option color' and @option-label='" + colorOption + "']"));
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js.executeScript("arguments[0].scrollIntoView(true);", productNameElement);
                 Actions actions = new Actions(driver);
