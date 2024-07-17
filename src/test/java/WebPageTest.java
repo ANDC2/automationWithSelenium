@@ -29,10 +29,10 @@ public class WebPageTest {
         jacketsPage = new JacketsPage(driver);
     }
 
-//    @AfterEach
-//    public void close() {
-//        driver.quit();
-//    }
+    @AfterEach
+    public void close() {
+        driver.quit();
+    }
 
     @Test
     public void testNavigateToMainPage() {
@@ -43,16 +43,16 @@ public class WebPageTest {
     @Test
     public void testLogIn() {
         mainPage.navigateToMainPage();
-        mainPage.acceptCookies();
+        //mainPage.acceptCookies();
         mainPage.clickOnSignInButton();
         mainPage.logIn();
-        assertThat(driver.findElement(By.xpath("//span[@class='logged-in']")).getText(), is("Welcome, Test Test!"));
+        assertThat(driver.findElement(By.xpath("//span[@class='logged-in']")).getText(), is("Welcome, test test!"));
     }
 
     @Test
     public void testLandingOnJacketsSection() {
         mainPage.navigateToMainPage();
-        mainPage.acceptCookies();
+        //mainPage.acceptCookies();
         mainPage.clickOnSignInButton();
         mainPage.logIn();
         mainPage.clickOnJacketsSection();
@@ -62,7 +62,7 @@ public class WebPageTest {
     @Test
     public void testSortByName_IsSortingByName() {
         mainPage.navigateToMainPage();
-        mainPage.acceptCookies();
+       // mainPage.acceptCookies();
         mainPage.clickOnSignInButton();
         mainPage.logIn();
         mainPage.clickOnJacketsSection();
@@ -74,7 +74,7 @@ public class WebPageTest {
     @Test
     public void testSortByPrice_IsSortingByPrice() {
         mainPage.navigateToMainPage();
-        mainPage.acceptCookies();
+        //mainPage.acceptCookies();
         mainPage.clickOnSignInButton();
         mainPage.logIn();
         mainPage.clickOnJacketsSection();
@@ -94,7 +94,7 @@ public class WebPageTest {
         String productSize = "M";
         String productColor = "Black";
         mainPage.navigateToMainPage();
-        mainPage.acceptCookies();
+       // mainPage.acceptCookies();
         mainPage.clickOnSignInButton();
         mainPage.logIn();
         mainPage.clickOnJacketsSection();
@@ -109,7 +109,7 @@ public class WebPageTest {
     public void addToCartWithoutSelectingSize_IsOpeningProductPage() throws InterruptedException {
         String product = "Neve Studio Dance Jacket";
         mainPage.navigateToMainPage();
-        mainPage.acceptCookies();
+        //mainPage.acceptCookies();
         mainPage.clickOnSignInButton();
         mainPage.logIn();
         mainPage.clickOnJacketsSection();

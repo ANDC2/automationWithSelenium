@@ -22,8 +22,8 @@ public class MainPage {
         driver.findElement(By.className("authorization-link")).click();
     }
     public void logIn(){
-        driver.findElement(By.id("email")).sendKeys("test@selenium.com");
-        driver.findElement(By.id("pass")).sendKeys("testSelenium1");
+        driver.findElement(By.id("email")).sendKeys("test@test.selenium.com");
+        driver.findElement(By.id("pass")).sendKeys("test@test1");
         driver.findElement(By.id("send2")).click();
     }
 
